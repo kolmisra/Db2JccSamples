@@ -4,18 +4,15 @@ public class Clientinfo {
 
 	public static void main(String[] args) throws SQLException {
 
+		String jccURL="jdbc:db2://localhost:51000/testdb:user=db2inst1;password=my_password;"
+				+ "clientWorkstation=myWorkStation;"
+				+ "clientUser=myUser;"
+				+ "clientApplicationInformation=myClientAppInfo;"
+				+ "clientAccountingInformation=myClientAccounting;";
+		
 		//Setting the client info details through connection URL
-		Connection con1 = DriverManager
-				.getConnection("jdbc:db2://localhost:51000/testdb:user=db2inst1;password=my_password;"
-						+ "clientWorkstation=myWorkStation;"
-						+ "clientUser=myUser;"
-						+ "clientApplicationInformation=myClientAppInfo;"
-						+ "clientAccountingInformation=myClientAccounting;");
+		Connection con1 = connection.Connection_URL.getConnection(jccURL);
 
-		System.out.println("Connection Successful..................");
-		System.out.println("Driver Version:    " + con1.getMetaData().getDriverVersion());
-		System.out.println("Database Version:  " + con1.getMetaData().getDatabaseProductVersion());
-		System.out.println();
 		System.out.println("Setting client Info details through connection URL");
 	       Statement stmt = con1.createStatement();
 	       ResultSet rs = stmt.executeQuery ("SELECT CURRENT CLIENT_WRKSTNNAME, CURRENT CLIENT_USERID, "
