@@ -2,6 +2,9 @@ package connection;
 import java.sql.*;
 public class Connection_cfg {
 
+	
+//Refer doc/db2dsdriverProperties.md for more details.
+	
 	public static void main(String[] args) throws SQLException {
 		Connection con1 = DriverManager.getConnection("jdbc:db2:///DSN1:dsdriverConfigFile=target/resources/db2dsdriver.cfg;", "db2inst1", "my_password");
 		System.out.println("Connection Successful..................");
